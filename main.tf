@@ -73,6 +73,18 @@ resource "aws_lambda_function_url" "this" {
   }
 }
 
+resource "aws_ssm_parameter" "function_arn" {
+  name  = var.ssm_function_arn_name
+  type  = "String"
+  value = aws_lambda_function.this.arn
+}
+
+resource "aws_ssm_parameter" "function_url" {
+  name  = var.ssm_function_url_name
+  type  = "String"
+  value = aws_lambda_function_url.this.function_url
+}
+
 output "function_name" {
   value       = aws_lambda_function.this.function_name
   description = "Name of the deployed Lambda function."

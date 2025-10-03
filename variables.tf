@@ -9,3 +9,15 @@ variable "environment_variables" {
   type        = map(string)
   default     = {}
 }
+
+variable "ssm_function_arn_name" {
+  description = "SSM Parameter Store name to save the Lambda function ARN."
+  type        = string
+  default     = "/sample/function/arn"
+}
+
+variable "ssm_function_url_name" {
+  description = "SSM Parameter Store name to save the Lambda Function URL."
+  type        = string
+  default     = "/sample/function/url"
+}
